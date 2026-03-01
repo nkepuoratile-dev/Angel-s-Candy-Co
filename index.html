@@ -13,7 +13,381 @@
     <link rel="stylesheet" href="styles.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ===== COLOR THEME VARIABLES ===== */
+        :root {
+            --pink-light: #fff0f3;
+            --pink: #ffb6c1;
+            --pink-dark: #ff9eb5;
+            --burgundy: #800020;
+            --burgundy-dark: #4a0012;
+            --burgundy-light: #a04545;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #343a40;
+        }
+
+        /* ===== TOP BANNER ===== */
+        .top-banner {
+            background-color: var(--burgundy);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-banner a {
+            color: var(--white);
+            font-weight: bold;
+            margin-left: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .top-banner a:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--white);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--burgundy);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+            font-weight: 300;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            font-size: 20px;
+            color: var(--burgundy);
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: var(--pink-dark);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background-color: var(--pink-light);
+            border-bottom: 2px solid var(--pink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 25px;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            color: var(--burgundy);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active {
+            color: var(--burgundy-light);
+        }
+
+        .nav-menu > li > a i {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--pink-light);
+            color: var(--burgundy);
+            padding-left: 25px;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background-color: var(--pink-light);
+            padding: 25px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            color: var(--burgundy);
+            margin-bottom: 20px;
+            font-size: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+        }
+
+        .category-list li {
+            margin-bottom: 12px;
+        }
+
+        .category-list a {
+            color: var(--dark);
+            transition: all 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .category-list a:hover {
+            color: var(--burgundy);
+            transform: translateX(5px);
+        }
+
+        .view-all-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--burgundy);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .view-all-link:hover {
+            color: var(--burgundy-light);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            min-height: 600px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
+            color: var(--white);
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--burgundy);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--pink);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.2);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--burgundy);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--burgundy);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--burgundy);
+            color: var(--white);
+        }
+
+        .btn-add {
+            background-color: var(--burgundy);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-add:hover {
+            background-color: var(--burgundy-dark);
+        }
+
+        /* Featured Products */
+        .featured h2 {
+            color: var(--burgundy);
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: var(--pink-light);
+        }
+
+        .product-card h3 {
+            color: var(--burgundy);
+            margin: 15px 0 5px;
+            font-size: 18px;
+        }
+
+        .product-card .price {
+            color: var(--burgundy-light);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* ===== PAGE CONTAINER ===== */
+        .page-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            color: var(--burgundy);
+            margin-bottom: 40px;
+            font-size: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink);
+            margin: 15px auto 0;
+        }
+
+        </style>
 </head>
 
 <body>
@@ -30,7 +404,7 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1>Candy <span>STORE</span></h1>
+                <h1>Angel's <span>STORE</span></h1>
             </div>
             <div class="header-icons">
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
@@ -52,49 +426,10 @@
                     <li><a href="chocolate.html">Chocolate Candy</a></li>
                     <li><a href="lollipops.html">Lollipops & Suckers</a></li>
                     <li><a href="sour.html">Sour Candy</a></li>
-                </ul>
+                
             </li>
-            <li class="dropdown">
-                <a href="#">By Color <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="red.html">Red</a></li>
-                    <li><a href="pink.html">Pink</a></li>
-                    <li><a href="blue.html">Blue</a></li>
-                    <li><a href="green.html">Green</a></li>
-                    <li><a href="purple.html">Purple</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">By Brand <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="haribo.html">Haribo</a></li>
-                    <li><a href="mms.html">M&M's</a></li>
-                    <li><a href="hersheys.html">Hershey's</a></li>
-                    <li><a href="skittles.html">Skittles</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">By Occasion <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="birthday.html">Birthday</a></li>
-                    <li><a href="wedding.html">Wedding</a></li>
-                    <li><a href="halloween.html">Halloween</a></li>
-                    <li><a href="christmas.html">Christmas</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">By Flavor <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="cherry.html">Cherry</a></li>
-                    <li><a href="watermelon.html">Watermelon</a></li>
-                    <li><a href="grape.html">Grape</a></li>
-                    <li><a href="green-apple.html">Green Apple</a></li>
-                </ul>
-            </li>
+
             <li><a href="candy-buffets.html">Candy Buffets</a></li>
-            <li><a href="faqs.html">FAQS</a></li>
-            <li><a href="shop.html">Shop All Candy</a></li>
-        </ul>
     </nav>
 
     <!-- Sidebar and Main Content -->
@@ -103,20 +438,16 @@
         <aside class="sidebar">
             <h3>Candy Categories</h3>
             <ul class="category-list">
-                <li><a href="individually-wrapped.html">Individually Wrapped Candy</a></li>
+               
                 <li><a href="gummy.html">Gummy Candy</a></li>
                 <li><a href="jelly-beans.html">Jelly Beans</a></li>
-                <li><a href="mints.html">Mints & Peppermint Candy</a></li>
-                <li><a href="old-fashioned.html">Old-Fashioned Candy</a></li>
+                <li><a href="mints.html">Mints & Peppermint Candy</a></
                 <li><a href="sour.html">Sour Candy</a></li>
-                <li><a href="salt-water-taffy.html">Salt Water Taffy</a></li>
                 <li><a href="chocolate.html">Chocolate Candy</a></li>
                 <li><a href="rock-candy.html">Rock Candy</a></li>
-                <li><a href="unwrapped.html">Unwrapped & Loose Candy</a></li>
                 <li><a href="gum.html">Gum & Bubblegum Candy</a></li>
                 <li><a href="lollipops.html">Lollipops & Suckers</a></li>
             </ul>
-            <a href="shop.html" class="view-all-link">View All Candy Types →</a>
         </aside>
 
         <!-- Main Content -->
@@ -135,27 +466,28 @@
                 <h2>Best Sellers</h2>
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="api/placeholder/200/200" alt="Gummy Bears">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Oursons_g%C3%A9latine_march%C3%A9_Rouffignac.jpg
+                        " alt="Gummy Bears">
                         <h3>Gummy Bears</h3>
-                        <p class="price">$4.99</p>
+                        <p class="price">P75.OO</p>
                         <button class="btn-add">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="api/placeholder/200/200" alt="Chocolate Bar">
+                        <img src="https://simplyhomecooked.com/wp-content/uploads/2024/06/pistachio-chocolate-bar-dubai-chocolate-2.jpg" alt="Chocolate Bar">
                         <h3>Milk Chocolate Bar</h3>
-                        <p class="price">$3.99</p>
+                        <p class="price">P100.00</p>
                         <button class="btn-add">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="api/placeholder/200/200" alt="Jelly Beans">
+                        <img src="https://cdn11.bigcommerce.com/s-99si0d/images/stencil/400x400/products/6475/54387/Jelly_Bean__63223.1724312250.jpg?c=2" alt="Jelly Beans">
                         <h3>Jelly Beans</h3>
-                        <p class="price">$5.99</p>
+                        <p class="price">P100.00</p>
                         <button class="btn-add">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="api/placeholder/200/200" alt="Lollipops">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXeRelxm_goSH-lw8mfwEU7fSg8EIaNdnABw&s" alt="Lollipops">
                         <h3>Assorted Lollipops</h3>
-                        <p class="price">$2.99</p>
+                        <p class="price">P50.00</p>
                         <button class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -171,19 +503,9 @@
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="faqs.html">FAQs</a></li>
                     <li><a href="exchange-policy.html">Exchange & Refund Policy</a></li>
                 </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Shop</h4>
-                <ul>
-                    <li><a href="best-sellers.html">Best Sellers</a></li>
-                    <li><a href="new-arrivals.html">New Arrivals</a></li>
-                    <li><a href="sale.html">Sale</a></li>
-                    <li><a href="gift-cards.html">Gift Cards</a></li>
-                </ul>
-            </div>
+            
             <div class="footer-section">
                 <h4>Connect With Us</h4>
                 <div class="social-icons">

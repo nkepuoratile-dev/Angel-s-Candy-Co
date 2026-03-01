@@ -7,6 +7,191 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<style> /* ===== POLICY PAGE ===== */
+        .policy-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .policy-section {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .policy-section h2 {
+            color: var(--burgundy);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .policy-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .policy-section ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+        }
+
+        /* ===== REVIEWS PAGE ===== */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+
+        .reviews-summary {
+            background-color: var(--pink-light);
+            padding: 30px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .average-rating {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--pink);
+            margin-bottom: 25px;
+        }
+
+        .average-rating h2 {
+            font-size: 48px;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .stars i {
+            margin: 0 2px;
+        }
+
+        .write-review h3 {
+            color: var(--burgundy);
+            margin-bottom: 20px;
+        }
+
+        .reviews-list {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .reviews-list h3 {
+            color: var(--burgundy);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+        }
+
+        .review-card {
+            padding: 20px;
+            border-bottom: 1px solid var(--pink-light);
+            margin-bottom: 20px;
+        }
+
+        .review-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .review-header h4 {
+            color: var(--burgundy);
+            font-size: 16px;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .review-text {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--burgundy);
+            color: var(--white);
+            padding: 50px 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--pink);
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        </style>
 <body>
     <!-- Top Banner -->
     <div class="top-banner">
@@ -54,7 +239,7 @@
             
             <div class="policy-section">
                 <h2>Exchanges</h2>
-                <p>If you need to exchange an item for a different product, send us an email at exchanges@candystore.com. We'll guide you through the process.</p>
+                <p>If you need to exchange an item for a different product, send us an email at exchanges at angel'scandystore@gmail.com. We'll guide you through the process.</p>
             </div>
             
             <div class="policy-section">
@@ -64,15 +249,15 @@
             
             <div class="policy-section">
                 <h2>Damaged or Incorrect Items</h2>
-                <p>If you received a damaged item or the wrong product, please contact us immediately at support@candystore.com with your order number and photos of the item. We'll make it right!</p>
+                <p>If you received a damaged item or the wrong product, please contact us immediately at support at angel'scandystore@gmail.com with your order number and photos of the item. We'll make it right!</p>
             </div>
             
             <div class="policy-section">
                 <h2>Contact Us</h2>
                 <p>If you have any questions about our Exchange & Refund Policy, please contact us:</p>
                 <ul>
-                    <li>Email: returns@candystore.com</li>
-                    <li>Phone: (555) 123-4567</li>
+                    <li>Email: returns@angel'scandystore@gmail.com</li>
+                    <li>Phone: +267 76 543 298</li>
                 </ul>
             </div>
         </div>

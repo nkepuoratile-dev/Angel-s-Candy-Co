@@ -6,6 +6,60 @@
     <title>Comments & Reviews - Candy Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+         /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-container,
+            .checkout-container,
+            .contact-container,
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) { }
+            .nav-menu {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 20px;
+                display: none;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cart-table {
+                font-size: 14px;
+            }
+            
+            .cart-product img {
+                width: 50px;
+                height: 50px;
+            }
+    </style>
 </head>
 <body>
     <!-- Top Banner -->
